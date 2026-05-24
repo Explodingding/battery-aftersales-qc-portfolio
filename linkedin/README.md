@@ -43,15 +43,12 @@ What's the #1 repeat fault you see on returned packs? 👇
 #BatteryQuality #Aftersales #QualityEngineering #EMobility #ESS #Brainport #RCA #SPC
 ```
 
-**Załącznik:** 1 obraz — screenshot dashboardu (`Battery_Aftersales_Quality_Portfolio` lub `repair-playbook.html` w przeglądarce). LinkedIn preferuje wizual.
+**Załącznik karuzela:** 6 PNG z `linkedin/carousel/` (01-cover → 06-cta) — LinkedIn: *Dodaj dokument* → wybierz wszystkie 6 plików. Slajd **05-form-factor-qc** = cylindrical vs prismatic vs pouch dla aftersales QC.
 
-**Pierwszy komentarz (od Ciebie, zaraz po publikacji):**
+**Pierwszy komentarz (od Ciebie, zaraz po publikacji):** — treść w `post-comment-link.txt`
+
 ```
-Link to the portfolio (HTML dashboard + repair playbook with LFP ESS BMS case study):
-[WKLEJ LINK — GitHub Pages / Netlify / OneDrive publiczny / lub PDF w dokumentach LinkedIn]
-
-Background: M.Sc. Electronics, IPC rework standards, Northvolt production support,
-Prodrive Eindhoven (Quality/R&D escalation). Open to quality-focused roles in battery aftersales — Helmond / Brainport region.
+https://explodingding.github.io/battery-aftersales-qc-portfolio/
 ```
 
 ---
