@@ -1,0 +1,70 @@
+/* Battery analytics page — extends portfolio.css */
+
+.analytics-hero {
+  background: linear-gradient(135deg, #1e3a5f 0%, #0d5c63 100%);
+}
+
+.ref-list {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.ref-list li { margin-bottom: 0.35rem; }
+
+.disclaimer-box {
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  font-size: 0.88rem;
+  margin-bottom: 1rem;
+}
+
+.key-msg {
+  background: var(--accent-light);
+  border-left: 4px solid var(--accent);
+  padding: 0.65rem 0.85rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.88rem;
+}
+
+.scenario-tabs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.scenario-tabs button {
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--line);
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.85rem;
+}
+
+.scenario-tabs button.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.chart-box.wide { height: 320px; }
+
+.cell-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.cell-legend span {
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  background: #f1f5f9;
+}

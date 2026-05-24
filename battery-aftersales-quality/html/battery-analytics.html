@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Battery Module Analytics — Łukasz Klimowski</title>
+  <link rel="stylesheet" href="assets/portfolio.css">
+  <link rel="stylesheet" href="assets/analytics.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <nav class="toolbar no-print">
+    <a href="index.html" class="secondary">← Dashboard</a>
+    <button type="button" onclick="window.print()">Drukuj / PDF</button>
+  </nav>
+
+  <header class="hero analytics-hero">
+    <div class="hero-inner">
+      <span class="hero-badge">Module-level statistics · BMS · Impedance spread</span>
+      <h1>Battery Module Analytics</h1>
+      <p>Educational models and simulations — impedance mismatch, string voltage during charge, BMS balancing effect, and cycle drift. Based on public datasets &amp; published research (cited below).</p>
+    </div>
+  </header>
+
+  <div id="load-error" class="container" hidden style="color:#dc2626;background:#fef2f2;padding:1rem;border-radius:8px;"></div>
+
+  <main class="container">
+    <div class="disclaimer-box" id="disclaimer"></div>
+    <div id="key-messages"></div>
+
+    <section class="section">
+      <h2>Are real data available?</h2>
+      <p><strong>Yes.</strong> Public sources include NASA Ames PCoE cycling + EIS (.mat), KIT large NMC aging sets, and peer-reviewed studies on cell-to-cell resistance mismatch. This page uses <em>literature-calibrated models</em> and simulations for portfolio clarity — not proprietary Durapower field data.</p>
+      <ul class="ref-list" id="references"></ul>
+    </section>
+
+    <section class="section">
+      <h2>Internal impedance spread → pack performance</h2>
+      <p style="font-size:0.88rem;color:var(--muted);">How difference between weakest and strongest cell/module affects modeled efficiency and cycle life. Your example (1% → ~1% eff., 3% → larger drop) is directionally right but <strong>non-linear</strong> — literature shows stronger effects at high C-rate and larger mismatch (e.g. ~20% R mismatch → ~40% life loss, Gogoana 2013).</p>
+      <div class="grid-2">
+        <div class="chart-box wide"><canvas id="chart-efficiency"></canvas></div>
+        <div class="chart-box wide"><canvas id="chart-cycle-life"></canvas></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>12-cell string during charge — BMS stabilizing voltage</h2>
+      <p style="font-size:0.88rem;color:var(--muted);">Compare matched pack vs 3% initial spread: without balancing, cell ΔV grows; with active BMS, balancing current limits divergence (simplified model).</p>
+      <div id="scenario-tabs" class="scenario-tabs"></div>
+      <div class="chart-box wide"><canvas id="chart-string"></canvas></div>
+      <p class="cell-legend"><span>Shown: weakest &amp; strongest cell + pack V + ΔV</span></p>
+    </section>
+
+    <section class="section">
+      <h2>Impedance drift over cycles — weak vs strong cell</h2>
+      <p style="font-size:0.88rem;color:var(--muted);">Weak cell starts ~3% higher R; spread widens → modeled pack efficiency falls over 500 cycles (aftersales trend monitoring).</p>
+      <div class="grid-2">
+        <div class="chart-box wide"><canvas id="chart-aging"></canvas></div>
+        <div class="chart-box wide"><canvas id="chart-eff-vs-cycles"></canvas></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Reference discharge profile (NASA-style)</h2>
+      <p style="font-size:0.88rem;color:var(--muted);">Illustrative 18650 discharge curve — download raw NASA PCoE data for full statistical analysis.</p>
+      <div class="chart-box wide"><canvas id="chart-nasa"></canvas></div>
+    </section>
+
+    <section class="section">
+      <h2>Aftersales QC takeaway</h2>
+      <ul>
+        <li>Log <strong>IR per module</strong> and compute spread % (weak vs strong) at intake and after repair.</li>
+        <li>Verify <strong>BMS balancing</strong> reduces ΔV during test charge — not only “comm OK”.</li>
+        <li>Trend spread over cycles on repeat customers — widening spread predicts efficiency loss before catastrophic fail.</li>
+        <li>Do not extrapolate 1:1 rules (1% spread = 1% eff.) — use ranges and C-rate context from literature.</li>
+      </ul>
+    </section>
+  </main>
+
+  <p class="footer-note">Educational analytics · Models cited · Łukasz Klimowski</p>
+  <script src="assets/analytics.js"></script>
+</body>
+</html>
