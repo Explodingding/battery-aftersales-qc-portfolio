@@ -1,0 +1,42 @@
+# LinkedIn profile — szybkie aktualizacje (skopiuj)
+
+## Headline (propozycja)
+
+```
+Quality Engineer · Battery Aftersales · RCA & SPC · Northvolt · Prodrive · Brainport · Open to NL/BE
+```
+
+Alternatywa krótsza:
+```
+Battery Aftersales Quality · 8D · RCA · Northvolt & Prodrive · Helmond/Brainport
+```
+
+---
+
+## About — pierwsze 3 zdania (reszta profilu bez zmian)
+
+```
+I help teams release repaired lithium-ion packs with the same discipline as production — not a lighter checklist.
+
+7+ years in battery and high-tech manufacturing: Northvolt Poland (battery plant), Prodrive Eindhoven (Quality/R&D escalation), currently industrial maintenance in Belgium. M.Sc. Electronics · IPC-A-610/7711 · Excel, Power BI, Python.
+
+Recently published a repair QC playbook (8-step gate, LFP ESS case study, high-volume fault guide) — link in my latest post.
+```
+
+---
+
+## Featured section (3 elementy)
+
+1. **Post** — główny post z portfolio (po publikacji: „Dodaj do wyróżnionych”)
+2. **Link** — HTML portfolio (GitHub Pages / Netlify) — tytuł: *Battery Aftersales Quality Portfolio*
+3. **Dokument** — PDF z `repair-playbook.html` (Ctrl+P) — tytuł: *Repair Playbook — LFP ESS Case Study*
+
+---
+
+## Banner (opcjonalnie)
+
+Tekst na grafice 1584×396:
+```
+Battery Aftersales Quality  ·  8-Step Release Gate  ·  NMC & LFP  ·  Brainport
+```
+(Narzędzia: Canva — szablon LinkedIn banner)

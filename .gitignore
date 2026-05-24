@@ -1,0 +1,14 @@
+# Local / generated
+pdf/
+cv_extracted.txt
+*.xlsx
+.~lock.*
+__pycache__/
+*.pyc
+
+# Private application files (not for public repo)
+linkedin/dm-pawel.txt
+Łukasz*.pdf
+
+# Keep carousel and public linkedin content
+!linkedin/carousel/*.png

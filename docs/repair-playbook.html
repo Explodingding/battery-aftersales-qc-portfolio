@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Repair Playbook — BMS Case Study &amp; High-Volume Quick Fixes</title>
+  <link rel="stylesheet" href="assets/portfolio.css">
+</head>
+<body>
+  <nav class="toolbar no-print">
+    <a href="index.html" class="secondary">← Dashboard</a>
+    <a href="index.html" class="secondary">Dokumenty aplikacyjne</a>
+    <button type="button" onclick="window.print()">Drukuj / PDF</button>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <span class="hero-badge">Repair deep-dive · LFP ESS · High-volume QC</span>
+      <h1>Battery Repair Playbook</h1>
+      <p>Case study: <strong>BMS communication timeout</strong> on returned <strong>LFP ESS pack</strong>.
+        Plus quick-fix guide for the most common aftersales faults — scaled for <strong>high-volume production</strong> at Helmond.</p>
+      <div class="hero-meta">
+        <span>Łukasz Klimowski</span>
+        <span>Durapower-aligned workflow</span>
+        <span>Contain → Diagnose → Fix → Verify → Scale</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="nav-tabs no-print">
+      <a href="#case-study">Case study: BMS timeout (LFP ESS)</a>
+      <a href="#playbook">Top faults &amp; quick fixes</a>
+      <a href="#scale">Scale to high volume</a>
+    </nav>
+
+    <!-- CASE STUDY -->
+    <section id="case-study" class="section">
+      <h2>Case study — BMS communication timeout on LFP ESS pack</h2>
+      <p>
+        <span class="badge lfp">LFP</span>
+        <span class="badge ess">Stationary ESS</span>
+        <span class="badge p2">Priority 2 — line stop at customer site</span>
+      </p>
+
+      <dl class="star-grid">
+        <dt>Context</dt>
+        <dd>
+          <strong>Utrecht Energy Storage</strong> — 280 kWh LFP container pack (Durapower-class integration).
+          Site controller reports <em>CAN timeout / BMS no response</em> after intermittent grid events.
+          Pack returned to <strong>Helmond aftersales</strong> under warranty. High-volume ESS fleet — same connector batch used across 12 sites.
+        </dd>
+        <dt>Situation</dt>
+        <dd>
+          Incoming log: fault code <code>FC-02 BMS communication timeout</code>. Site technician replaced comm cable externally — fault returned within 72 h.
+          Pack arrives at 42% SOC, no visible damage. Customer pressure: restore site backup capacity before peak load window (4 days).
+        </dd>
+        <dt>Task</dt>
+        <dd>
+          Restore BMS comms and safe release <strong>without</strong> unnecessary full module swap (cost + lead time).
+          Identify if defect is <strong>hardware, configuration, or prior incorrect repair</strong> — and flag fleet risk if batch-related.
+        </dd>
+      </dl>
+
+      <h3>Diagnostic sequence (my workflow)</h3>
+      <div class="diagnostic-flow">
+        <span>1. Incoming + ESD</span><span class="arrow">→</span>
+        <span>2. IR test PASS</span><span class="arrow">→</span>
+        <span>3. Pack voltage OK</span><span class="arrow">→</span>
+        <span>4. CAN silent</span><span class="arrow">→</span>
+        <span>5. BMS 12V aux OK</span><span class="arrow">→</span>
+        <span>6. Harness continuity FAIL pin 4-7</span><span class="arrow">→</span>
+        <span>7. Connector XJ12 corrosion</span><span class="arrow">→</span>
+        <span>8. Config mismatch vs site profile</span>
+      </div>
+
+      <div class="measure-box">
+        <div><strong>PASS</strong>IR @ 500 V<br>842 MΩ</div>
+        <div><strong>FAIL</strong>CAN heartbeat<br>No response 30 s</div>
+        <div><strong>FIND</strong>Pin resistance<br>4-7: open circuit</div>
+      </div>
+
+      <h3>Action timeline</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <time>Day 0 — 09:00</time>
+          <h4>Contain &amp; log</h4>
+          <p>Quarantine pack R-2847; photo connector XJ12; export last 500 BMS fault records (empty — confirms comms layer not cell layer).</p>
+        </div>
+        <div class="timeline-item">
+          <time>Day 0 — 11:30</time>
+          <h4>Root cause — dual failure</h4>
+          <p>
+            <strong>Physical:</strong> moisture ingress on field-mated connector (seal compressed during external cable swap).
+            <strong>Logical:</strong> BMS firmware profile still set to <em>Bus Depot v3.1</em> — wrong CAN baud / address map for ESS controller v4.2
+            (prior third-party service re-flashed without site backup).
+          </p>
+        </div>
+        <div class="timeline-item">
+          <time>Day 0 — 15:00</time>
+          <h4>Repair</h4>
+          <p>Replace 40 cm harness section XJ12→BMS per WI-AS-018; torque HV secondary lock 8 Nm; ESD log.
+            Re-flash BMS from golden image <strong>ESS-Utrecht-v4.2</strong>; restore customer SOC limits and contactor timings from site export file.</p>
+        </div>
+        <div class="timeline-item">
+          <time>Day 1 — 10:00</time>
+          <h4>Verify &amp; release</h4>
+          <p>8-step gate all PASS; 2× charge/discharge cycle; CAN telemetry stable 4 h soak test.
+            Final pack V 332.4 V (in SPC control). FTTR: Yes. Turnaround: 1.2 days.</p>
+        </div>
+        <div class="timeline-item">
+          <time>Day 1 — 14:00</time>
+          <h4>Scale — fleet action</h4>
+          <p>Pareto check: 3 other ESS returns same month with XJ12 family connector → open NCR; supplier batch hold;
+            add <strong>connector seal visual</strong> to incoming gate for all ESS returns; one-page re-flash checklist (mandatory config backup before any BMS SW action).</p>
+        </div>
+      </div>
+
+      <h3>Result</h3>
+      <dl class="star-grid">
+        <dt>Customer</dt>
+        <dd>Pack shipped Day 2; site online before peak window. Zero repeat within 90 days.</dd>
+        <dt>Quality metrics</dt>
+        <dd>FC-02 count on ESS line down <strong>38%</strong> over next quarter after WI + incoming gate update.</dd>
+        <dt>QE angle</dt>
+        <dd>Not a “BMS board swap” — layered root cause (handling + config). High-volume lesson: <strong>standardize connector inspection + config golden images per site profile</strong> before scaling repair throughput.</dd>
+      </dl>
+
+      <p class="experience-callout">
+        <strong>Link to my background:</strong> At Northvolt I documented similar comms vs power-layer faults on production support systems;
+        at Prodrive I escalated repeat connector-related failures to Quality/R&amp;D with batch data — same linking-pin mindset for Durapower aftersales.
+      </p>
+    </section>
+
+    <!-- PLAYBOOK TABLE -->
+    <section id="playbook" class="section">
+      <h2>Top aftersales faults — quick fix playbook (high volume)</h2>
+      <p style="font-size:0.9rem;color:var(--muted);">
+        For Helmond repair line targeting <strong>high throughput</strong>: each row = contain → diagnose → fix → verify →
+        <em>one scalable countermeasure</em> (WI, checklist, training, supplier action). Priorities based on portfolio Pareto + Durapower application mix (EV bus NMC + ESS LFP).
+      </p>
+
+      <table class="data playbook-table">
+        <thead>
+          <tr>
+            <th>Fault / code</th>
+            <th>Chemistry</th>
+            <th>Priority</th>
+            <th>Quick contain</th>
+            <th>Fast diagnose (≤15 min)</th>
+            <th>Standard fix</th>
+            <th>Verify before release</th>
+            <th>Scale on high volume</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>BMS / CAN timeout<br><small>FC-02</small></td>
+            <td><span class="badge lfp">LFP</span> ESS</td>
+            <td><span class="badge p2">P2</span></td>
+            <td>Quarantine; no re-flash until config backed up</td>
+            <td>IR → aux 12V → CAN termination → harness ohmmeter → read DTC log</td>
+            <td>Harness section or BMS re-seat; re-flash from site golden image</td>
+            <td>4 h CAN soak; comms profile match checklist</td>
+            <td class="steps"><ol><li>Incoming connector seal photo</li><li>Golden firmware library per site</li><li>1-page re-flash SOP — no backup = no flash</li></ol></td>
+          </tr>
+          <tr>
+            <td>Cell imbalance / voltage drift<br><small>FC-01</small></td>
+            <td><span class="badge lfp">LFP</span> <span class="badge" style="background:#ede9fe;color:#7c3aed;">NMC</span></td>
+            <td><span class="badge p1">P1</span></td>
+            <td>Stop charge; label max cell ID; SOC &lt; 30% for module work</td>
+            <td>Cell group V map; balance history; thermal scan</td>
+            <td>Replace weak module; BMS balance reset per WI</td>
+            <td>ΔV ≤ spec; balance cycle 24 h log</td>
+            <td class="steps"><ol><li>SPC on incoming ΔV</li><li>Module batch traceability sticker</li><li>Poka-yoke: wrong module serial = gate block</li></ol></td>
+          </tr>
+          <tr>
+            <td>IR below limit<br><small>FC-03</small></td>
+            <td>All</td>
+            <td><span class="badge p1">P1</span></td>
+            <td>HV lockout; red “DO NOT ENERGIZE” tag</td>
+            <td>IR @ 500 V; repeat after 15 min dry; busbar inspection</td>
+            <td>Clean/seal moisture path; re-torque busbars; replace MSD if suspect</td>
+            <td>IR ≥ 500 MΩ × 2 consecutive; torque log signed</td>
+            <td class="steps"><ol><li>Monthly torque tool calibration</li><li>Torque verification step on all HV work</li><li>MSA on IR tester quarterly</li></ol></td>
+          </tr>
+          <tr>
+            <td>Contactor / pre-charge fail<br><small>FC-07</small></td>
+            <td><span class="badge lfp">LFP</span> ESS</td>
+            <td><span class="badge p1">P1</span></td>
+            <td>Disable remote close; mechanical HV disconnect</td>
+            <td>Pre-charge current profile; contactor weld test; BMS command log</td>
+            <td>Replace contactor kit; check pre-charge resistor</td>
+            <td>10× close/open cycle; no weld; inrush within spec</td>
+            <td class="steps"><ol><li>Contactor hour counter on incoming</li><li>Kit BOM pre-kitted per repair bay</li></ol></td>
+          </tr>
+          <tr>
+            <td>Coolant leak / thermal<br><small>FC-04</small></td>
+            <td><span class="badge" style="background:#ede9fe;color:#7c3aed;">NMC</span> EV</td>
+            <td><span class="badge p1">P1</span></td>
+            <td>Drain to safe level; ventilate enclosure</td>
+            <td>Pressure decay; dye test; pump current signature</td>
+            <td>Replace seal/hose; refill &amp; bleed per WI</td>
+            <td>Leak test 30 min; ΔT uniform on load test</td>
+            <td class="steps"><ol><li>ESS outdoor returns: mandatory seal inspection photo</li><li>Coolant lot traceability</li></ol></td>
+          </tr>
+          <tr>
+            <td>CAN / harness fault<br><small>FC-06</small></td>
+            <td>All</td>
+            <td><span class="badge p2">P2</span></td>
+            <td>Isolate CAN segment</td>
+            <td>TDR or segment swap; termination 120 Ω check</td>
+            <td>Repair harness; crimp per IPC-620</td>
+            <td>Bus load test; error frame count = 0</td>
+            <td class="steps"><ol><li>Crimp tool calibration log</li><li>Sample harness IR scan at incoming</li></ol></td>
+          </tr>
+          <tr>
+            <td>Firmware / config mismatch<br><small>FC-10</small></td>
+            <td><span class="badge lfp">LFP</span> ESS</td>
+            <td><span class="badge p2">P2</span></td>
+            <td>No field update; snapshot current config</td>
+            <td>Compare to site golden hash; CAN map diff</td>
+            <td>Re-flash + parameter restore from backup</td>
+            <td>Site acceptance test script PASS</td>
+            <td class="steps"><ol><li>Config backup mandatory on intake</li><li>Automated hash compare in repair log</li></ol></td>
+          </tr>
+          <tr>
+            <td>HV connector damage<br><small>FC-05</small></td>
+            <td><span class="badge" style="background:#ede9fe;color:#7c3aed;">NMC</span> EV</td>
+            <td><span class="badge p2">P2</span></td>
+            <td>Inspect pins; no mate if deformed</td>
+            <td>Pin retention force; microscope photo</td>
+            <td>Replace connector housing + pins per kit</td>
+            <td>Mate/unmate 5×; IR re-test</td>
+            <td class="steps"><ol><li>Transport damage code on all field returns</li><li>Packaging feedback loop to logistics</li></ol></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- HIGH VOLUME SCALE -->
+    <section id="scale" class="section">
+      <h2>Scaling fixes to high-volume production — 5 rules</h2>
+      <div class="grid-2">
+        <div>
+          <h3>1. One defect → one permanent gate change</h3>
+          <p>Every repeat fault adds a line to incoming or final inspection within 48 h — not only a email. Example: FC-02 → connector photo + config hash.</p>
+          <h3>2. Pre-kit repair bays</h3>
+          <p>Top 5 faults cover ~80% of volume (Pareto). Pre-stock contactor kits, harness sections, seals — target &lt; 4 h mean repair for P2 comms faults.</p>
+          <h3>3. Golden images &amp; torque logs</h3>
+          <p>LFP ESS: firmware/profile library. All HV work: torque wrench ID logged per repair — links to calibration due date.</p>
+        </div>
+        <div>
+          <h3>4. Daily 15-min defect huddle</h3>
+          <p>Aftersales + production + dev: yesterday’s FTTR, top code, open NCR. Decision: contain batch? update WI? — keeps high volume from hiding patterns.</p>
+          <h3>5. FTTR as line KPI</h3>
+          <p>Target ≥ 92% at volume. Repeat within 30 days triggers automatic 8D — no release without effectiveness check on 20 units.</p>
+        </div>
+      </div>
+      <div class="volume-callout">
+        <strong>Throughput vs safety (Durapower 100% safety track record):</strong>
+        Never skip IR or config verification to save cycle time. Parallelize diagnostics (Bay A: electrical, Bay B: thermal/BMS) — not safety gates.
+        My Northvolt experience: production pressure is real; the countermeasure is <em>standard work</em>, not skipped tests.
+      </div>
+    </section>
+
+    <section class="section no-print">
+      <h2>Related portfolio pages</h2>
+      <div class="nav-tabs">
+        <a href="index.html">QC Dashboard (SPC, Pareto, KPI)</a>
+        <a href="#">Case studies PDF/HTML</a>
+        <a href="#">Working method</a>
+      </div>
+    </section>
+  </main>
+
+  <p class="footer-note">Repair Playbook · Łukasz Klimowski · Case study illustrative of ESS/LFP workflow; methodology from Northvolt &amp; Prodrive</p>
+</body>
+</html>

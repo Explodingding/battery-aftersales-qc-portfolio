@@ -1,0 +1,20 @@
+After 7+ years in battery and high-tech manufacturing (Northvolt · Prodrive · Brainport), I built something I wish I had earlier in my career:
+
+a practical repair QC playbook for lithium-ion aftersales.
+
+Not theory — an 8-step gate I would run on every returned pack:
+incoming → IR → cell balance → BMS/CAN → thermal → repair to WI → functional test → SPC release.
+
+Why it matters:
+→ NMC packs (EV/bus) and LFP systems (ESS/UPS) fail differently
+→ "BMS timeout" is often NOT a BMS board — it's connector + config (I document a full LFP ESS case)
+→ High-volume aftersales needs FTTR ≥92% without skipping safety gates
+
+I mapped top fault codes (CAN timeout, cell drift, IR fail, pre-charge, thermal) to contain → diagnose in 15 min → fix → verify → scale (WI update, golden firmware, torque logs).
+
+Built as an interactive HTML portfolio — charts, SPC, Pareto, 8D example.
+Happy to share the link in comments if useful for QE / aftersales / battery service teams.
+
+What's the #1 repeat fault you see on returned packs? 👇
+
+#BatteryQuality #Aftersales #QualityEngineering #EMobility #ESS #Brainport

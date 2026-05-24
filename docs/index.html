@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Battery Aftersales Quality Portfolio — Łukasz Klimowski</title>
+  <link rel="stylesheet" href="assets/portfolio.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <nav class="toolbar no-print">
+    <a href="#" class="secondary">Portfolio</a>
+    <button type="button" onclick="window.print()">Drukuj / PDF</button>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <span class="hero-badge">Portfolio · Quality Engineer Aftersales · Durapower Helmond</span>
+      <h1>Battery Aftersales Quality — Repair QC Dashboard</h1>
+      <p>Quality portfolio for <strong>Durapower Technology Group</strong> — repair validation of
+        <strong>NMC &amp; LFP</strong> lithium systems for EV, ESS, UPS and specialty vehicles.
+        By Łukasz Klimowski (Northvolt · Prodrive · Brainport).</p>
+      <div class="hero-meta">
+        <span>Helmond / Automotive Campus</span>
+        <span>Module · Pack · BMS · Thermal · HV</span>
+        <span>SPC · 8D · FTTR · Inspection gates</span>
+      </div>
+    </div>
+  </header>
+
+  <div id="load-error" class="container" hidden style="color:#dc2626;background:#fef2f2;padding:1rem;border-radius:8px;"></div>
+
+  <main class="container">
+    <section class="section">
+      <h2>Why Durapower — company &amp; repair context</h2>
+      <div class="company-grid">
+        <div id="durapower-context"></div>
+        <div>
+          <h3>Pack anatomy — what we repair &amp; verify</h3>
+          <p style="font-size:0.9rem;color:var(--muted);">Durapower integrates full systems for e-mobility and ESS. In aftersales we restore safety and performance at pack, module and BMS level.</p>
+          <div class="pack-visual" style="margin-top:0.75rem;">
+            <div class="pack-layer"><strong>Enclosure &amp; HV interlocks</strong> — seals, MSD, crash integrity</div>
+            <div class="pack-layer"><strong>Module array</strong> — NMC (EV/bus) or LFP (ESS) cell groups</div>
+            <div class="pack-layer"><strong>BMS + HV junction</strong> — contactors, pre-charge, CAN, firmware</div>
+            <div class="pack-layer"><strong>Thermal management</strong> — coolant loop, pumps, sensors, leaks</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Aftersales quality KPIs</h2>
+      <p id="totals-note" style="font-size:0.85rem;color:var(--muted);"></p>
+      <div id="kpi-grid" class="grid-3" style="margin-top:0.75rem;"></div>
+    </section>
+
+    <div class="grid-2">
+      <section class="section">
+        <h2>FTTR &amp; inspection pass trend</h2>
+        <div class="chart-box"><canvas id="chart-fttr"></canvas></div>
+      </section>
+      <section class="section">
+        <h2>Top battery repair fault modes (Pareto)</h2>
+        <p style="font-size:0.82rem;color:var(--muted);">Cell imbalance, BMS timeout, IR fail, thermal — typical aftersales returns.</p>
+        <div class="chart-box"><canvas id="chart-pareto"></canvas></div>
+      </section>
+    </div>
+
+    <section class="section">
+      <h2>8-step battery repair QC gate</h2>
+      <p style="font-size:0.88rem;color:var(--muted);">From Helmond service center or field return — every pack passes verified states before release to fleet/ESS site.</p>
+      <div id="workflow" class="workflow" style="margin-top:1rem;"></div>
+    </section>
+
+    <section class="section">
+      <h2>Battery repair — NMC vs LFP (Durapower chemistries)</h2>
+      <div id="chemistry-repair" class="grid-2"></div>
+    </section>
+
+    <div class="grid-2">
+      <section class="section">
+        <h2>Post-repair pack voltage — SPC</h2>
+        <p style="font-size:0.85rem;color:var(--muted);">Control limits on final pack V. OOC → hold shipment, open 8D.</p>
+        <div class="chart-box tall"><canvas id="chart-spc"></canvas></div>
+      </section>
+      <section class="section">
+        <h2>Fault category &amp; chemistry mix in repairs</h2>
+        <div class="grid-2">
+          <div class="chart-box"><canvas id="chart-category"></canvas></div>
+          <div class="chart-box"><canvas id="chart-chemistry"></canvas></div>
+        </div>
+      </section>
+    </div>
+
+    <section class="section">
+      <h2>Inspection specification — release criteria</h2>
+      <table id="inspection-table" class="data">
+        <thead><tr><th>#</th><th>Gate</th><th>Test method</th><th>Release criteria</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <div class="grid-2">
+      <section class="section">
+        <h2>8D — repeat IR failure after module swap</h2>
+        <div id="eight-d"></div>
+      </section>
+      <section class="section">
+        <h2>Recent repair register</h2>
+        <table id="recent-repairs" class="data">
+          <thead><tr><th>ID</th><th>Product</th><th>Fault</th><th>FTTR</th><th>h</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </div>
+
+    <section class="section">
+      <h2>My experience mapped to Durapower aftersales</h2>
+      <div id="experience-map"></div>
+    </section>
+
+    <section class="section no-print" style="background:linear-gradient(90deg,#e6f4f1,white);border-color:#0d5c63;">
+      <h2>Repair deep-dive</h2>
+      <p style="margin:0 0 0.75rem;">Detailed case study + high-volume quick-fix playbook:</p>
+      <a href="repair-playbook.html" style="display:inline-block;background:#0d5c63;color:white;padding:0.6rem 1.2rem;border-radius:6px;text-decoration:none;font-weight:600;">Open Repair Playbook → BMS timeout (LFP ESS) &amp; top faults</a>
+    </section>
+  </main>
+
+  <p class="footer-note">Portfolio · May 2026 · Łukasz Klimowski · Synthetic data models QC workflow; Northvolt/Prodrive cases are real.</p>
+  <script src="assets/portfolio.js"></script>
+</body>
+</html>

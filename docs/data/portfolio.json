@@ -1,0 +1,317 @@
+{
+  "generated": "2026-05-24",
+  "kpis": {
+    "repairs_last_month": 28,
+    "fttr_pct": 96.4,
+    "inspection_pass_pct": 94.6,
+    "repeat_repair_pct": 3.6,
+    "avg_turnaround_days": 3.1,
+    "ncr_count": 2
+  },
+  "kpi_trend": {
+    "months": [
+      "2025-05",
+      "2025-06",
+      "2025-07",
+      "2025-08",
+      "2025-09",
+      "2025-10",
+      "2025-11",
+      "2025-12",
+      "2026-01",
+      "2026-02",
+      "2026-03",
+      "2026-04"
+    ],
+    "fttr": [
+      84.4,
+      90.0,
+      89.7,
+      90.3,
+      97.4,
+      90.3,
+      79.5,
+      83.8,
+      84.2,
+      100.0,
+      83.3,
+      96.4
+    ],
+    "pass_rate": [
+      93.8,
+      95.9,
+      92.0,
+      95.6,
+      95.2,
+      94.0,
+      92.0,
+      92.6,
+      93.8,
+      96.8,
+      92.4,
+      94.6
+    ],
+    "repairs": [
+      32,
+      40,
+      39,
+      31,
+      39,
+      31,
+      39,
+      37,
+      38,
+      31,
+      36,
+      28
+    ]
+  },
+  "fault_pareto": [
+    {
+      "label": "Cell imbalance / voltage drift",
+      "count": 82
+    },
+    {
+      "label": "Contactor weld / pre-charge failure",
+      "count": 50
+    },
+    {
+      "label": "BMS communication timeout",
+      "count": 48
+    },
+    {
+      "label": "Firmware / configuration mismatch",
+      "count": 44
+    },
+    {
+      "label": "CAN bus / wiring harness fault",
+      "count": 42
+    },
+    {
+      "label": "Insulation resistance below limit",
+      "count": 36
+    },
+    {
+      "label": "Sensor calibration out of spec",
+      "count": 32
+    },
+    {
+      "label": "Coolant leak / thermal fault",
+      "count": 31
+    }
+  ],
+  "fault_categories": [
+    {
+      "label": "Electrical",
+      "count": 254
+    },
+    {
+      "label": "Mechanical",
+      "count": 56
+    },
+    {
+      "label": "Software",
+      "count": 44
+    },
+    {
+      "label": "Safety",
+      "count": 36
+    },
+    {
+      "label": "Thermal",
+      "count": 31
+    }
+  ],
+  "chemistry_mix": [
+    {
+      "label": "Mixed",
+      "count": 241
+    },
+    {
+      "label": "NMC",
+      "count": 94
+    },
+    {
+      "label": "LFP",
+      "count": 86
+    }
+  ],
+  "spc": {
+    "labels": [
+      "2026-04-14",
+      "2026-04-14",
+      "2026-04-14",
+      "2026-04-15",
+      "2026-04-15",
+      "2026-04-16",
+      "2026-04-16",
+      "2026-04-16",
+      "2026-04-16",
+      "2026-04-16",
+      "2026-04-17",
+      "2026-04-17",
+      "2026-04-17",
+      "2026-04-20",
+      "2026-04-20",
+      "2026-04-21",
+      "2026-04-21",
+      "2026-04-21",
+      "2026-04-21",
+      "2026-04-21",
+      "2026-04-22",
+      "2026-04-22",
+      "2026-04-23",
+      "2026-04-23",
+      "2026-04-23",
+      "2026-04-24",
+      "2026-04-24",
+      "2026-04-24",
+      "2026-04-27",
+      "2026-04-27",
+      "2026-04-27",
+      "2026-04-27",
+      "2026-04-28",
+      "2026-04-28",
+      "2026-04-29",
+      "2026-04-29",
+      "2026-04-29",
+      "2026-04-30",
+      "2026-04-30",
+      "2026-04-30"
+    ],
+    "voltage": [
+      396.57,
+      394.73,
+      390.27,
+      398.43,
+      391.65,
+      391.28,
+      399.1,
+      386.75,
+      390.0,
+      411.22,
+      399.51,
+      401.06,
+      387.6,
+      394.81,
+      387.08,
+      399.24,
+      393.64,
+      398.79,
+      392.56,
+      388.23,
+      392.23,
+      391.18,
+      389.35,
+      391.34,
+      397.12,
+      390.54,
+      414.68,
+      389.01,
+      393.34,
+      395.85,
+      392.15,
+      398.24,
+      397.53,
+      395.42,
+      391.34,
+      395.27,
+      392.61,
+      396.91,
+      391.4,
+      396.05
+    ],
+    "ucl": 410.0,
+    "lcl": 380.0,
+    "target": 395.0
+  },
+  "recent_repairs": [
+    {
+      "repair_id": "R1414",
+      "product_type": "Charging Interface Module",
+      "fault_description": "Coolant leak / thermal fault",
+      "first_time_right": "Yes",
+      "repair_hours": 15.8
+    },
+    {
+      "repair_id": "R1415",
+      "product_type": "Thermal Management Unit",
+      "fault_description": "CAN bus / wiring harness fault",
+      "first_time_right": "Yes",
+      "repair_hours": 9.7
+    },
+    {
+      "repair_id": "R1416",
+      "product_type": "BMS / HV Control Unit",
+      "fault_description": "CAN bus / wiring harness fault",
+      "first_time_right": "Yes",
+      "repair_hours": 12.9
+    },
+    {
+      "repair_id": "R1417",
+      "product_type": "HV Junction Box",
+      "fault_description": "Contactor weld / pre-charge failure",
+      "first_time_right": "No",
+      "repair_hours": 15.2
+    },
+    {
+      "repair_id": "R1418",
+      "product_type": "HV Junction Box",
+      "fault_description": "Contactor weld / pre-charge failure",
+      "first_time_right": "Yes",
+      "repair_hours": 10.0
+    },
+    {
+      "repair_id": "R1419",
+      "product_type": "BMS / HV Control Unit",
+      "fault_description": "CAN bus / wiring harness fault",
+      "first_time_right": "Yes",
+      "repair_hours": 11.7
+    },
+    {
+      "repair_id": "R1420",
+      "product_type": "HV Junction Box",
+      "fault_description": "Firmware / configuration mismatch",
+      "first_time_right": "Yes",
+      "repair_hours": 14.6
+    },
+    {
+      "repair_id": "R1421",
+      "product_type": "HV Junction Box",
+      "fault_description": "Cell imbalance / voltage drift",
+      "first_time_right": "Yes",
+      "repair_hours": 15.6
+    }
+  ],
+  "ncr_samples": [
+    {
+      "ncr_id": "NCR-201",
+      "description": "Repeat IR failure after module swap \u2014 wrong torque on HV busbar",
+      "severity": "Major",
+      "days_to_close": 12
+    },
+    {
+      "ncr_id": "NCR-202",
+      "description": "BMS re-flash without backup config \u2014 customer config lost",
+      "severity": "Critical",
+      "days_to_close": 8
+    },
+    {
+      "ncr_id": "NCR-203",
+      "description": "Incoming pack accepted with damaged seal \u2014 inspection step skipped",
+      "severity": "Major",
+      "days_to_close": 15
+    },
+    {
+      "ncr_id": "NCR-204",
+      "description": "Cell group voltage out of spec passed to shipping",
+      "severity": "Critical",
+      "days_to_close": 6
+    }
+  ],
+  "totals": {
+    "repairs": 421,
+    "inspections": 3368,
+    "spc_samples": 932
+  }
+}

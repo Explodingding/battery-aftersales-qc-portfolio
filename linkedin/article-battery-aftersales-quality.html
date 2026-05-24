@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkedIn Article — Eight Gates Before Release</title>
+  <link rel="stylesheet" href="../battery-aftersales-quality/html/assets/portfolio.css">
+  <style>
+    .article-body { max-width: 680px; margin: 0 auto; }
+    .article-body h1 { font-size: 1.6rem; line-height: 1.25; margin-bottom: 0.25rem; }
+    .article-body .byline { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.5rem; font-style: italic; }
+    .article-body h2 { font-size: 1.15rem; color: var(--accent); margin: 1.5rem 0 0.6rem; border: none; text-transform: none; letter-spacing: 0; }
+    .article-body p { margin: 0 0 0.85rem; text-align: left; }
+    .article-body ul { margin: 0 0 0.85rem; padding-left: 1.25rem; }
+    .article-body li { margin-bottom: 0.35rem; }
+    .article-body table { font-size: 0.88rem; }
+    .linkedin-tip { background: #eff6ff; border: 1px solid #93c5fd; border-radius: 8px; padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    .cta-box { background: var(--accent-light); border-radius: 8px; padding: 1rem; margin-top: 1.5rem; text-align: center; }
+  </style>
+</head>
+<body>
+  <nav class="toolbar no-print">
+    <a href="README.md" class="secondary">← LinkedIn guide</a>
+    <button type="button" onclick="window.print()">Drukuj / PDF</button>
+  </nav>
+
+  <main class="container article-body">
+    <div class="linkedin-tip no-print">
+      <strong>LinkedIn:</strong> Napisz artykuł → skopiuj sekcje poniżej (lub z <code>article-battery-aftersales-quality.md</code>).
+      Tytuł: <em>Eight Gates Before Release: Quality Control for Repaired Lithium-Ion Battery Packs</em>
+    </div>
+
+    <article class="section">
+      <h1>Eight Gates Before Release: Quality Control for Repaired Lithium-Ion Battery Packs</h1>
+      <p class="byline">Lessons from battery manufacturing and Brainport production — applied to aftersales · Łukasz Klimowski</p>
+
+      <h2>The problem nobody talks about in aftersales</h2>
+      <p>New battery packs leave the factory with a documented chain of evidence. <strong>Repaired packs often don't.</strong> A module swap or BMS re-flash can restore function — or introduce a latent fault that returns in 72 hours at an ESS site or bus depot. After seven years in battery and high-tech environments (Northvolt · Prodrive · Brainport), I believe repair quality needs production-grade discipline.</p>
+
+      <h2>NMC and LFP fail differently</h2>
+      <table class="data">
+        <tr><th></th><th>NMC</th><th>LFP</th></tr>
+        <tr><td>Typical use</td><td>EV, bus, mobility</td><td>ESS, UPS, datacenter</td></tr>
+        <tr><td>Common returns</td><td>Cell drift, thermal, HV wear</td><td>BMS/CAN timeout, config, seals</td></tr>
+        <tr><td>QC focus</td><td>IR, thermal verification</td><td>Golden firmware, connectors</td></tr>
+      </table>
+
+      <h2>My 8-step repair QC gate</h2>
+      <ol>
+        <li>Incoming &amp; ESD — quarantine if safety-critical</li>
+        <li>HV isolation (IR) — before energization</li>
+        <li>Cell / module balance — chemistry-specific ΔV</li>
+        <li>BMS / CAN — separate comms from cell faults</li>
+        <li>Thermal system — leak, pump, fan</li>
+        <li>Repair to work instruction — torque, traceability</li>
+        <li>Post-repair functional test</li>
+        <li>Final release — SPC on pack voltage, full docs</li>
+      </ol>
+
+      <h2>Case study: BMS timeout on LFP ESS (not a board swap)</h2>
+      <p><span class="badge lfp">LFP</span> <span class="badge ess">ESS</span> — Site reports CAN timeout. Root cause: <strong>connector moisture (pin 4–7 open)</strong> + <strong>wrong firmware profile</strong> after field re-flash. Fix: harness section + golden image re-flash + 4 h soak. Scale: mandatory connector photo on ESS intake; config backup before any BMS SW action. FC-02 down ~38% next quarter.</p>
+
+      <h2>High-volume playbook (top faults)</h2>
+      <table class="data playbook-table">
+        <tr><th>Fault</th><th>Scale fix</th></tr>
+        <tr><td>BMS / CAN timeout</td><td>Golden firmware per site; no flash without backup</td></tr>
+        <tr><td>Cell imbalance</td><td>SPC on ΔV; module serial poka-yoke</td></tr>
+        <tr><td>IR fail</td><td>Torque calibration + IR tester MSA</td></tr>
+        <tr><td>Pre-charge / contactor</td><td>Pre-kitted bays; hour counter on intake</td></tr>
+      </table>
+
+      <h2>Five rules for high-volume lines</h2>
+      <ul>
+        <li>One defect → one permanent gate change (48 h)</li>
+        <li>Pre-kit bays for Pareto top 5</li>
+        <li>Golden images &amp; torque logs on every HV job</li>
+        <li>Daily 15-min defect huddle (aftersales · production · dev)</li>
+        <li>FTTR ≥ 92%; repeat in 30 days → auto 8D</li>
+      </ul>
+
+      <div class="cta-box">
+        <p><strong>Interactive portfolio</strong> (dashboard + repair playbook) — link in comments on my post or message me.</p>
+        <p style="font-size:0.85rem;color:var(--muted);margin:0;">Built because a job application only had room for a CV. Sharing in case it helps other QE / aftersales teams.</p>
+      </div>
+
+      <p style="margin-top:1.5rem;"><strong>Question for you:</strong> What's the #1 repeat fault on returned packs — and did you fix the process or only the part?</p>
+      <p style="font-size:0.85rem;color:var(--muted);">#QualityEngineering #BatteryAftersales #LithiumIon #EMobility #ESS #Brainport</p>
+    </article>
+  </main>
+</body>
+</html>
