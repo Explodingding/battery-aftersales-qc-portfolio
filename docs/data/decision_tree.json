@@ -1,0 +1,130 @@
+{
+  "title": "Returned pack — what do you check first?",
+  "subtitle": "Interactive guide for aftersales intake (not a substitute for work instructions).",
+  "start": "root",
+  "nodes": {
+    "root": {
+      "question": "Where did this pack come from?",
+      "options": [
+        { "label": "Electric vehicle / bus (moving)", "next": "mobility" },
+        { "label": "Energy storage / UPS / datacenter (stationary)", "next": "ess" },
+        { "label": "Not sure / mixed", "next": "symptom" }
+      ]
+    },
+    "mobility": {
+      "question": "Main symptom reported?",
+      "options": [
+        { "label": "Reduced range or power", "next": "mob_power" },
+        { "label": "Warning light / fault code only", "next": "mob_dtc" },
+        { "label": "Thermal smell / hot pack", "next": "mob_thermal" },
+        { "label": "No communication with vehicle", "next": "mob_can" }
+      ]
+    },
+    "ess": {
+      "question": "Main symptom at site?",
+      "options": [
+        { "label": "BMS / CAN timeout", "next": "ess_can" },
+        { "label": "Capacity dropped / won't hold charge", "next": "ess_capacity" },
+        { "label": "Coolant leak or overheating", "next": "ess_thermal" },
+        { "label": "Visible bulge on module", "next": "ess_swell" }
+      ]
+    },
+    "symptom": {
+      "question": "What is the clearest symptom?",
+      "options": [
+        { "label": "Communication timeout", "next": "ess_can" },
+        { "label": "Isolation / IR alarm", "next": "ir_fail" },
+        { "label": "Cell imbalance warning", "next": "balance" },
+        { "label": "Unknown — start standard gate", "next": "gate_start" }
+      ]
+    },
+    "mob_power": {
+      "result": true,
+      "title": "Likely: cell drift or weak module",
+      "checks": ["Gate 3: cell/module voltage delta", "Gate 7: charge/discharge profile vs baseline", "Log per-module IR if prismatic/pouch"],
+      "link": "battery-analytics.html",
+      "link_label": "See impedance spread analytics",
+      "tier": "method"
+    },
+    "mob_dtc": {
+      "result": true,
+      "title": "Likely: BMS or HV junction",
+      "checks": ["Gate 4: read DTCs + CAN trace", "Gate 2: IR before any HV work", "Check pre-charge circuit and contactors"],
+      "link": "repair-playbook.html#case-study",
+      "link_label": "BMS timeout case study",
+      "tier": "published"
+    },
+    "mob_thermal": {
+      "result": true,
+      "title": "STOP — thermal safety path",
+      "checks": ["Do not energize until thermal team review", "Gate 5: coolant path + pump/fan", "Photo modules for swell (especially pouch)", "Open NCR if venting suspected"],
+      "link": "decision-tree.html",
+      "link_label": "",
+      "tier": "method"
+    },
+    "mob_can": {
+      "result": true,
+      "title": "Likely: comm layer not cell layer",
+      "checks": ["Gate 4: CAN + 12V aux to BMS", "Harness continuity on field connector", "Firmware profile vs vehicle/site map"],
+      "link": "repair-playbook.html#case-study",
+      "link_label": "Full LFP ESS CAN case",
+      "tier": "published"
+    },
+    "ess_can": {
+      "result": true,
+      "title": "Often NOT a BMS board swap",
+      "checks": ["Connector moisture / pin resistance (FC-02 pattern)", "Golden firmware image for site controller", "Gate 4 before blaming cells"],
+      "link": "repair-playbook.html#case-study",
+      "link_label": "Read case study",
+      "tier": "published"
+    },
+    "ess_capacity": {
+      "result": true,
+      "title": "Likely: fade or imbalance over life",
+      "checks": ["Gate 3: balance at multiple SOC points", "Compare to fleet baseline SoH", "Prismatic LFP: check compression frame"],
+      "link": "repair-playbook.html#case-swelling",
+      "link_label": "Prismatic swelling case",
+      "tier": "method"
+    },
+    "ess_thermal": {
+      "result": true,
+      "title": "Thermal system first",
+      "checks": ["Gate 5: pressure test + pump run", "Cold-plate contact after module work", "SPC on post-repair temps if available"],
+      "link": "index.html",
+      "link_label": "Dashboard SPC section",
+      "tier": "illustrative"
+    },
+    "ess_swell": {
+      "result": true,
+      "title": "Form factor critical — pouch/prismatic",
+      "checks": ["Measure module thickness vs baseline", "Do not ship with lost stack pressure", "Replace module if laminate crease or gas bulge"],
+      "link": "repair-playbook.html#case-swelling",
+      "link_label": "Swelling case study",
+      "tier": "published"
+    },
+    "ir_fail": {
+      "result": true,
+      "title": "Isolation path — gate 2 focus",
+      "checks": ["Retest after dry-out if moisture suspected", "Busbar torque vs WI (8D pattern)", "Re-test after module swap — repeat IR fails are often assembly"],
+      "link": "index.html",
+      "link_label": "8D IR example on dashboard",
+      "tier": "published"
+    },
+    "balance": {
+      "result": true,
+      "title": "Cell/module spread",
+      "checks": ["Gate 3: dV limits (NMC tighter than LFP)", "Verify BMS balancing active on test charge", "Log weak module ID for trend"],
+      "link": "battery-analytics.html",
+      "link_label": "BMS string simulation",
+      "tier": "modeled"
+    },
+    "gate_start": {
+      "result": true,
+      "title": "Run the full 8-step gate in order",
+      "checks": ["Never skip Gate 2 (IR) before HV", "Document every step in inspection log", "FTTR = all 8 pass first time"],
+      "link": "learn.html",
+      "link_label": "5-minute intro course",
+      "tier": "method"
+    }
+  }
+}

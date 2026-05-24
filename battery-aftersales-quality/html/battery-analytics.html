@@ -6,11 +6,16 @@
   <title>Battery Module Analytics — Łukasz Klimowski</title>
   <link rel="stylesheet" href="assets/portfolio.css">
   <link rel="stylesheet" href="assets/analytics.css">
+  <link rel="stylesheet" href="assets/site.css">
+  <meta property="og:image" content="https://explodingding.github.io/battery-aftersales-qc-portfolio/assets/og-preview.png">
+  <meta property="og:url" content="https://explodingding.github.io/battery-aftersales-qc-portfolio/battery-analytics.html">
+  <meta name="twitter:card" content="summary_large_image">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 </head>
 <body>
   <nav class="toolbar no-print">
-    <a href="index.html" class="secondary">← Dashboard</a>
+    <div id="site-nav" class="site-nav"></div>
+    <a href="start-here.html" class="secondary">Start here</a>
     <button type="button" onclick="window.print()">Drukuj / PDF</button>
   </nav>
 
@@ -25,7 +30,8 @@
   <div id="load-error" class="container" hidden style="color:#dc2626;background:#fef2f2;padding:1rem;border-radius:8px;"></div>
 
   <main class="container">
-    <div class="disclaimer-box" id="disclaimer"></div>
+    <div id="tier-legend" class="tier-legend"></div>
+    <div id="disclaimer" class="disclaimer-box"></div>
     <div id="key-messages"></div>
 
     <section class="section">
@@ -148,6 +154,8 @@
   </main>
 
   <p class="footer-note">Educational analytics · Models cited · Łukasz Klimowski</p>
+  <script src="assets/site.js"></script>
   <script src="assets/analytics.js"></script>
+  <script>renderTierLegend();</script>
 </body>
 </html>

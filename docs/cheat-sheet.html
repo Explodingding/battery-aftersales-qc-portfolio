@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QC Cheat Sheet — 8 Gates</title>
+  <meta name="description" content="Printable repair QC reference.">
+  <meta property="og:title" content="QC Cheat Sheet — 8 Gates">
+  <meta property="og:description" content="Printable repair QC reference.">
+  <meta property="og:url" content="https://explodingding.github.io/battery-aftersales-qc-portfolio/cheat-sheet.html">
+  <meta property="og:image" content="https://explodingding.github.io/battery-aftersales-qc-portfolio/assets/og-preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="assets/portfolio.css">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <nav class="toolbar no-print">
+    <div id="site-nav" class="site-nav"></div>
+    <button type="button" onclick="window.print()">Print / PDF</button>
+  </nav>
+
+  <header class="hero"><div class="hero-inner"><h1>8-Gate QC Cheat Sheet</h1>
+    <p>Print (Ctrl+P) for workshop use.</p></div></header>
+  <main class="container"><section class="section">
+    <div id="cheat-grid" class="cheat-grid"></div>
+    <p style="font-size:0.8rem;color:var(--muted);margin-top:1rem;">Add-on by format: cylindrical → IR spread · prismatic → compression · pouch → swell check.</p>
+  </section></main>
+  <p class="footer-note">Portfolio · Łukasz Klimowski · <a href="changelog.html">Changelog</a></p>
+  <script src="assets/site.js"></script>
+  <script>
+fetch("data/gate_methods.json").then(r=>r.json()).then(d=>{
+  document.getElementById("cheat-grid").innerHTML = d.gates.map(g=>
+    '<div class="cheat-cell"><strong>Gate '+g.step+': '+g.name+'</strong>Pass: '+g.pass+'<br>Fail: '+g.fail_action+'<br><em>'+g.plain_why+'</em></div>'
+  ).join("");
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decision Tree — Battery Aftersales Intake</title>
+  <meta name="description" content="Interactive EV vs ESS symptom guide.">
+  <meta property="og:title" content="Decision Tree — Battery Aftersales Intake">
+  <meta property="og:description" content="Interactive EV vs ESS symptom guide.">
+  <meta property="og:url" content="https://explodingding.github.io/battery-aftersales-qc-portfolio/decision-tree.html">
+  <meta property="og:image" content="https://explodingding.github.io/battery-aftersales-qc-portfolio/assets/og-preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="assets/portfolio.css">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <nav class="toolbar no-print">
+    <div id="site-nav" class="site-nav"></div>
+    <button type="button" onclick="window.print()">Print / PDF</button>
+  </nav>
+
+  <header class="hero"><div class="hero-inner">
+    <span class="hero-badge">Interactive intake guide</span>
+    <h1>Returned pack — what do you check first?</h1>
+    <p>Symptom → recommended gates. Not a substitute for work instructions.</p>
+  </div></header>
+  <main class="container"><section class="section">
+    <div id="tier-legend" class="tier-legend"></div>
+    <div id="dt-root"></div>
+  </section></main>
+  <p class="footer-note">Portfolio · Łukasz Klimowski · <a href="changelog.html">Changelog</a></p>
+  <script src="assets/site.js"></script>
+  <script src="assets/decision-tree.js"></script>
+  <script>renderTierLegend();</script>
+</body>
+</html>

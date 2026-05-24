@@ -1,20 +1,16 @@
-After 7+ years in battery and high-tech manufacturing (Northvolt · Prodrive · Brainport), I built something I wish I had earlier in my career:
+After 7+ years in battery manufacturing (Northvolt · Prodrive · Brainport), I built an interactive portfolio for lithium-ion **aftersales quality** — now with guides for experts *and* newcomers.
 
-a practical repair QC playbook for lithium-ion aftersales.
+Every repaired pack is a safety product. Before it goes back to a bus or ESS site, I use an **8-step gate** — and I documented the whole workflow publicly.
 
-Not theory — an 8-step gate I would run on every returned pack:
-incoming → IR → cell balance → BMS/CAN → thermal → repair to WI → functional test → SPC release.
+What's new:
+→ **Start here** hub — pick your path (hiring / aftersales / curious)
+→ **5-minute course** — plain language, no jargon wall
+→ **Decision tree** — symptom → what to check first
+→ **Form factors** — cylindrical vs prismatic vs pouch QC differences
+→ Case studies: BMS timeout (LFP ESS) + prismatic swelling
 
-Why it matters:
-→ NMC packs (EV/bus) and LFP systems (ESS/UPS) fail differently
-→ "BMS timeout" is often NOT a BMS board — it's connector + config (I document a full LFP ESS case)
-→ High-volume aftersales needs FTTR ≥92% without skipping safety gates
+Link in comments 👇
 
-I mapped top fault codes (CAN timeout, cell drift, IR fail, pre-charge, thermal) to contain → diagnose in 15 min → fix → verify → scale (WI update, golden firmware, torque logs).
-
-Built as an interactive HTML portfolio — charts, SPC, Pareto, 8D example.
-Happy to share the link in comments if useful for QE / aftersales / battery service teams.
-
-What's the #1 repeat fault you see on returned packs? 👇
+What's the #1 repeat fault you see on returned packs?
 
 #BatteryQuality #Aftersales #QualityEngineering #EMobility #ESS #Brainport

@@ -1,0 +1,94 @@
+{
+  "terms": [
+    {
+      "id": "fttr",
+      "term": "FTTR",
+      "plain": "First-Time-Right — the pack passes all release checks on the first attempt after repair, without coming back.",
+      "gate": 8
+    },
+    {
+      "id": "ir",
+      "term": "IR test",
+      "plain": "Insulation resistance test — checks that high-voltage parts are electrically isolated from the metal case (safety before energizing).",
+      "gate": 2
+    },
+    {
+      "id": "bms",
+      "term": "BMS",
+      "plain": "Battery Management System — the pack's brain: monitors cells, controls contactors, talks to the vehicle or ESS site over CAN.",
+      "gate": 4
+    },
+    {
+      "id": "can",
+      "term": "CAN bus",
+      "plain": "Controller Area Network — the data cable language between the battery and the vehicle/site controller. Timeouts often look like a 'dead BMS'.",
+      "gate": 4
+    },
+    {
+      "id": "soc",
+      "term": "SOC",
+      "plain": "State of Charge — how full the battery is, like a fuel gauge (%).",
+      "gate": 3
+    },
+    {
+      "id": "soh",
+      "term": "SoH",
+      "plain": "State of Health — how much capacity the pack still has vs when it was new.",
+      "gate": 7
+    },
+    {
+      "id": "spc",
+      "term": "SPC",
+      "plain": "Statistical Process Control — tracking measurements over time to catch drift before bad packs ship.",
+      "gate": 8
+    },
+    {
+      "id": "8d",
+      "term": "8D",
+      "plain": "Eight Disciplines — structured problem-solving when the same fault keeps repeating (team → contain → root cause → fix → verify → prevent).",
+      "gate": 8
+    },
+    {
+      "id": "ncr",
+      "term": "NCR",
+      "plain": "Non-Conformance Report — formal record when something fails spec and needs investigation.",
+      "gate": 1
+    },
+    {
+      "id": "nmc",
+      "term": "NMC",
+      "plain": "Nickel Manganese Cobalt chemistry — higher energy, common in EV and bus packs. Sensitive to heat and cell balance.",
+      "gate": null
+    },
+    {
+      "id": "lfp",
+      "term": "LFP",
+      "plain": "Lithium Iron Phosphate chemistry — very stable, common in energy storage (ESS) and UPS. Long life, different voltage behaviour.",
+      "gate": null
+    },
+    {
+      "id": "ess",
+      "term": "ESS",
+      "plain": "Energy Storage System — stationary battery at a site (solar, grid backup, datacenter), not in a moving vehicle.",
+      "gate": null
+    },
+    {
+      "id": "hv",
+      "term": "HV",
+      "plain": "High Voltage — typically hundreds of volts in a pack. Always treat as live until proven isolated.",
+      "gate": 2
+    },
+    {
+      "id": "dtc",
+      "term": "DTC",
+      "plain": "Diagnostic Trouble Code — a numbered fault the BMS or vehicle stores when something goes wrong.",
+      "gate": 4
+    },
+    {
+      "id": "pareto",
+      "term": "Pareto chart",
+      "plain": "Bar chart of top fault types — fix the few causes that create most returns first (80/20 rule).",
+      "gate": null
+    }
+  ]
+}

@@ -45,10 +45,10 @@ What's the #1 repeat fault you see on returned packs? 👇
 
 **Załącznik karuzela:** 6 PNG z `linkedin/carousel/` (01-cover → 06-cta) — LinkedIn: *Dodaj dokument* → wybierz wszystkie 6 plików. Slajd **05-form-factor-qc** = cylindrical vs prismatic vs pouch dla aftersales QC.
 
-**Pierwszy komentarz (od Ciebie, zaraz po publikacji):** — treść w `post-comment-link.txt`
+**Pierwszy komentarz (od Ciebie, zaraz po publikacji):** — treść w `post-comment-link.txt` (link do **start-here.html**)
 
 ```
-https://explodingding.github.io/battery-aftersales-qc-portfolio/
+https://explodingding.github.io/battery-aftersales-qc-portfolio/start-here.html
 ```
 
 ---

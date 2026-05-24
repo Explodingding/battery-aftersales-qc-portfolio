@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Start Here — Battery Aftersales Quality</title>
+  <meta name="description" content="Every repaired lithium-ion pack is a safety product. Choose your path: hiring manager, aftersales engineer, or curious visitor.">
+  <meta property="og:title" content="Battery Aftersales Quality — Start Here">
+  <meta property="og:description" content="8 gates before a repaired pack returns to a bus or ESS site. Interactive guides for experts and newcomers.">
+  <meta property="og:image" content="https://explodingding.github.io/battery-aftersales-qc-portfolio/assets/og-preview.png">
+  <meta property="og:url" content="https://explodingding.github.io/battery-aftersales-qc-portfolio/start-here.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="assets/portfolio.css">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <nav class="toolbar no-print">
+    <div id="site-nav" class="site-nav"></div>
+    <button type="button" onclick="window.print()">Print / PDF</button>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <span class="hero-badge">No battery PhD required · 60-second orientation</span>
+      <h1>Every repaired pack is a safety product</h1>
+      <p>Before a lithium-ion battery goes back to an <strong>electric bus</strong>, <strong>truck</strong>, or <strong>energy storage site</strong>, I use an <span data-glossary="8d">8-step quality gate</span>.
+        This portfolio shows how — for hiring managers, aftersales teams, and anyone curious about batteries.</p>
+      <p style="margin-top:0.75rem;font-size:0.9rem;opacity:0.9;">By Łukasz Klimowski · Northvolt · Prodrive · Brainport</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section">
+      <h2>Choose your path</h2>
+      <div class="path-grid">
+        <a class="path-card" href="index.html">
+          <div class="path-icon">&#128203;</div>
+          <h3>I'm hiring / reviewing a candidate</h3>
+          <p>See the <strong>QC dashboard</strong>, <span data-glossary="fttr">FTTR</span> trends, <span data-glossary="8d">8D</span> example, and experience mapped to aftersales.</p>
+          <span class="path-cta">Open dashboard →</span>
+        </a>
+        <a class="path-card" href="repair-playbook.html">
+          <div class="path-icon">&#128295;</div>
+          <h3>I work in aftersales / service</h3>
+          <p>Jump to the <strong>repair playbook</strong>, decision tree, and gate cheat sheet. Case studies: BMS timeout + prismatic swelling.</p>
+          <span class="path-cta">Open playbook →</span>
+        </a>
+        <a class="path-card" href="learn.html">
+          <div class="path-icon">&#128161;</div>
+          <h3>I'm new to batteries</h3>
+          <p>Take the <strong>5-minute course</strong>: what a pack is, why gates matter, and one quiz. Plain language, no jargon wall.</p>
+          <span class="path-cta">Start 5-min course →</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Before repair → after the 8 gates</h2>
+      <p style="font-size:0.88rem;color:var(--muted);">A returned pack often looks fine on the outside. The gate sequence turns symptoms into verified release.</p>
+      <div class="before-after">
+        <div class="ba-panel ba-before">
+          <h4>Before (typical return)</h4>
+          <ul>
+            <li>Customer report: “BMS timeout” or weak range</li>
+            <li>Unknown prior repairs or wrong firmware</li>
+            <li>Pressure to ship in 4 days</li>
+            <li>Risk: swap parts until something works</li>
+          </ul>
+        </div>
+        <div class="ba-arrow">→</div>
+        <div class="ba-panel ba-after">
+          <h4>After (gate release)</h4>
+          <ul>
+            <li><span data-glossary="ir">IR</span> pass · balance OK · <span data-glossary="can">CAN</span> alive</li>
+            <li>Root cause logged (not symptom-only fix)</li>
+            <li><span data-glossary="fttr">FTTR</span> Yes · traceable torque &amp; parts</li>
+            <li>Fleet risk flagged if batch-related</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>What's inside a pack?</h2>
+      <div id="pack-diagram" class="pack-diagram"></div>
+    </section>
+
+    <section class="section">
+      <h2>Explore the full portfolio</h2>
+      <div class="tier-legend" id="tier-legend"></div>
+      <p style="font-size:0.85rem;color:var(--muted);margin-top:0.5rem;">Charts mix <strong>published research</strong>, <strong>literature models</strong>, and <strong>illustrative QC logs</strong> — each labelled so you know what you're looking at.</p>
+      <p style="margin-top:1rem;">
+        <a href="decision-tree.html" style="font-weight:600;">Interactive decision tree</a> ·
+        <a href="battery-analytics.html" style="font-weight:600;">Module analytics</a> ·
+        <a href="cheat-sheet.html" style="font-weight:600;">Printable cheat sheet</a> ·
+        <a href="glossary.html" style="font-weight:600;">Glossary</a>
+      </p>
+    </section>
+  </main>
+
+  <p class="footer-note">Portfolio · Łukasz Klimowski · <a href="changelog.html">Changelog</a></p>
+  <script src="assets/site.js"></script>
+  <script>
+    injectPackDiagram();
+    renderTierLegend();
+  </script>
+</body>
+</html>

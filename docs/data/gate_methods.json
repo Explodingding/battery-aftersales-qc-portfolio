@@ -1,0 +1,76 @@
+{
+  "gates": [
+    {
+      "step": 1,
+      "name": "Incoming & ESD",
+      "timebox_min": 10,
+      "tools": "ESD bench, camera, serial scanner",
+      "pass": "Serial matches RMA; no leak, crack, or loose HV",
+      "fail_action": "Hold + NCR; photo evidence; notify customer",
+      "plain_why": "Catches transport damage and wrong-part returns before any electrical work."
+    },
+    {
+      "step": 2,
+      "name": "HV isolation (IR)",
+      "timebox_min": 15,
+      "tools": "IR tester 500 V DC, HV PPE",
+      "pass": "≥ 500 MΩ (typical WI threshold)",
+      "fail_action": "STOP — no energize; dry-out or module isolation hunt",
+      "plain_why": "Proves the pack won't shock a technician or short to chassis."
+    },
+    {
+      "step": 3,
+      "name": "Cell / module balance",
+      "timebox_min": 20,
+      "tools": "Module voltmeter, BMS readout",
+      "pass": "ΔV ≤ 50 mV (NMC) / 80 mV (LFP) at rest",
+      "fail_action": "Identify weak module; balance test charge; log spread %",
+      "plain_why": "Imbalanced cells stress the pack and cause early failure or range loss."
+    },
+    {
+      "step": 4,
+      "name": "BMS diagnostics",
+      "timebox_min": 15,
+      "tools": "CAN tool, BMS service software",
+      "pass": "No active safety DTCs; heartbeat OK",
+      "fail_action": "Trace comm layer before swapping board; check firmware profile",
+      "plain_why": "Many 'dead battery' reports are connector or config — not cells."
+    },
+    {
+      "step": 5,
+      "name": "Thermal system",
+      "timebox_min": 15,
+      "tools": "Pressure gauge, leak spray, pump command",
+      "pass": "No coolant loss; pump/fan respond",
+      "fail_action": "Repair leak path; verify cold-plate contact after module work",
+      "plain_why": "Thermal faults become fires or capacity loss in the field."
+    },
+    {
+      "step": 6,
+      "name": "Repair execution",
+      "timebox_min": null,
+      "tools": "WI-AS-xx, torque wrench, parts traceability",
+      "pass": "Repair per approved work instruction; torque logged",
+      "fail_action": "Stop line if WI deviation; QE sign-off for escape",
+      "plain_why": "Repeat faults often trace to skipped steps — not mystery defects."
+    },
+    {
+      "step": 7,
+      "name": "Post-repair functional",
+      "timebox_min": 45,
+      "tools": "Charge/discharge rig, pre-charge monitor",
+      "pass": "Profiles within spec; contactors sequence OK",
+      "fail_action": "Re-open gates 3–4; do not release",
+      "plain_why": "Proves the fix works under load — not only on paper."
+    },
+    {
+      "step": 8,
+      "name": "Final release",
+      "timebox_min": 10,
+      "tools": "Label printer, SPC chart, inspection log",
+      "pass": "Pack V in control; docs complete; FTTR marked Yes",
+      "fail_action": "Hold shipment; open 8D if repeat pattern",
+      "plain_why": "Last line of defence before the pack returns to a bus or ESS site."
+    }
+  ]
+}

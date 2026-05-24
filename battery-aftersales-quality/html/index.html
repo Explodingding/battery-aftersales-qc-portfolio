@@ -4,12 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Battery Aftersales Quality Portfolio — Łukasz Klimowski</title>
+  <meta name="description" content="Repair QC dashboard for lithium-ion aftersales — FTTR, 8-step gate, NMC/LFP, SPC.">
+  <meta property="og:title" content="Battery Aftersales Quality — Repair QC Dashboard">
+  <meta property="og:description" content="8 gates before a repaired pack returns to fleet or ESS. Interactive portfolio by Łukasz Klimowski.">
+  <meta property="og:image" content="https://explodingding.github.io/battery-aftersales-qc-portfolio/assets/og-preview.png">
+  <meta property="og:url" content="https://explodingding.github.io/battery-aftersales-qc-portfolio/">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="assets/portfolio.css">
+  <link rel="stylesheet" href="assets/site.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 </head>
 <body>
+  <div class="hub-banner no-print">New here? <a href="start-here.html">Start here</a> · <a href="learn.html">5-min course</a> · <a href="decision-tree.html">Decision tree</a></div>
   <nav class="toolbar no-print">
-    <a href="../../html/index.html" class="secondary">← Dokumenty aplikacyjne</a>
+    <div id="site-nav" class="site-nav"></div>
     <button type="button" onclick="window.print()">Drukuj / PDF</button>
   </nav>
 
@@ -50,6 +58,7 @@
 
     <section class="section">
       <h2>Aftersales quality KPIs</h2>
+      <div class="tier-legend" id="tier-legend"></div>
       <p id="totals-note" style="font-size:0.85rem;color:var(--muted);"></p>
       <div id="kpi-grid" class="grid-3" style="margin-top:0.75rem;"></div>
     </section>
@@ -68,8 +77,10 @@
 
     <section class="section">
       <h2>8-step battery repair QC gate</h2>
-      <p style="font-size:0.88rem;color:var(--muted);">From Helmond service center or field return — every pack passes verified states before release to fleet/ESS site.</p>
+      <p style="font-size:0.88rem;color:var(--muted);">From Helmond service center or field return — every pack passes verified states before release to fleet/ESS site.
+        <a href="cheat-sheet.html">Print cheat sheet</a> · <span class="tier-badge tier-method">Method / WI</span></p>
       <div id="workflow" class="workflow" style="margin-top:1rem;"></div>
+      <div id="gate-cards" class="gate-cards"></div>
     </section>
 
     <section class="section">
@@ -123,11 +134,13 @@
       <h2>Repair deep-dive</h2>
       <p style="margin:0 0 0.75rem;">Detailed case study + high-volume quick-fix playbook:</p>
       <a href="repair-playbook.html" style="display:inline-block;background:#0d5c63;color:white;padding:0.6rem 1.2rem;border-radius:6px;text-decoration:none;font-weight:600;">Repair Playbook</a>
-      <a href="battery-analytics.html" style="display:inline-block;background:#1e3a5f;color:white;padding:0.6rem 1.2rem;border-radius:6px;text-decoration:none;font-weight:600;margin-left:0.5rem;">Module Analytics (BMS · impedance)</a>
+      <a href="start-here.html" style="display:inline-block;background:#0891b2;color:white;padding:0.6rem 1.2rem;border-radius:6px;text-decoration:none;font-weight:600;margin-left:0.5rem;">Start here (overview)</a>
     </section>
   </main>
 
-  <p class="footer-note">Portfolio · May 2026 · Łukasz Klimowski · Synthetic data models QC workflow; Northvolt/Prodrive cases are real.</p>
+  <p class="footer-note">Portfolio · <a href="changelog.html">Changelog</a> · Łukasz Klimowski · KPI data <span class="tier-badge tier-illustrative">Illustrative QC</span></p>
+  <script src="assets/site.js"></script>
   <script src="assets/portfolio.js"></script>
+  <script>renderTierLegend();</script>
 </body>
 </html>
