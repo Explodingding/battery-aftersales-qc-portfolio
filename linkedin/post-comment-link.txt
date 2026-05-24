@@ -1,11 +1,14 @@
 Link to the portfolio (HTML dashboard + repair playbook with LFP ESS BMS case study):
 
-[PASTE YOUR LINK HERE — e.g. GitHub Pages / Netlify / public OneDrive]
+https://explodingding.github.io/battery-aftersales-qc-portfolio/
 
 Includes:
 • KPI dashboard (FTTR, SPC on post-repair voltage, Pareto fault modes)
 • 8-step inspection gate for NMC & LFP packs
 • Case study: BMS communication timeout on LFP ESS — dual root cause (connector + firmware profile)
 • Quick-fix playbook for high-volume aftersales
+
+Repair playbook (direct link):
+https://explodingding.github.io/battery-aftersales-qc-portfolio/repair-playbook.html
 
 Background: M.Sc. Electronics · IPC rework standards · Northvolt (battery plant) · Prodrive Eindhoven (Quality/R&D escalation). Based in BE/NL industrial environment. Open to quality-focused conversations in battery aftersales — Brainport region.
